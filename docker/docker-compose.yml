@@ -1,0 +1,21 @@
+version: "3"
+services: 
+  postgresdb:
+    image: postgres:10.4
+    restart: always
+    environment: 
+      - POSTGRES_DB=base-prometheus
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+    volumes:
+      - "./data/:/var/lib/postgresql/data"
+    ports: 
+      - "5432:5432"
+  # base-prometheus:
+  #   build: .
+  #   volumes: 
+  #     - "../:/opt/base-prometheus"
+  #   ports:
+  #     - "8080:8080"
+  #   links: 
+  #     - postgresdb
